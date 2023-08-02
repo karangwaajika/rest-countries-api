@@ -73,6 +73,47 @@ nav {
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 14px;
     color: hsl(0, 0%, 52%);
+}
+
+.filter{
+    width: 200px;
+    position: relative;
+}
+
+.filter:hover .filter-items{
+    display: block;
+
+}
+.filter-select{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    border-radius: 3px;
+    background-color: white;
+    font-size: 12px;
+    cursor: pointer;
+    box-shadow: 1px 2px 1px #e1e4de40;
+}
+
+.filter-items{
+    border-radius: 3px;
+    background-color: white;
+    margin-top: 5px;
+    box-shadow: 1px 2px 1px #e1e4de40;
+    position: absolute;
+    display: none;
+}
+
+.filter-items .item{
+    padding: 10px;
+    font-size: 12px;
+    width: 200px
+}
+
+.filter-items .item:hover{
+    background-color: hsl(0, 0%, 98%);
+}
+.filter-items .item:active{
+    background-color: hsl(0, 0%, 98%);
 }
