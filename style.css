@@ -7,9 +7,6 @@
 body{
     background-color: hsl(0, 0%, 98%);
     color:hsl(200, 15%, 8%);
-}
-
-nav, .nav-title, .mode {
     font-size: 14px;
 }
 
@@ -30,4 +27,52 @@ nav {
 .mode {
     display: flex;
     gap: 5px;
+}
+
+.options{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 50px 20px 50px;
+    margin-top: 20px;
+}
+.search-input{
+    flex-grow: 1;
+    position: relative;
+}
+
+.country-field{
+    border: 1px solid white;
+    border-radius: 3px;
+    padding: 10px;
+    padding-left: 50px;
+    background-color: white;
+    width: 300px;
+    box-shadow: 1px 2px 1px #e1e4de40;
+    outline: 0;
+}
+
+.country-field:focus{
+    border-color: white;
+    outline: 0;
+    box-shadow: 0px 3px #e1e4de40;
+    padding: 10px;
+    padding-left: 50px;
+}
+
+.country-field::placeholder {
+    color: hsl(0, 0%, 52%);
+    opacity: 1;
+    padding: 10px;
+    font-size: 12px;
+}
+
+.search-icon{
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    color: hsl(0, 0%, 52%);
 }
