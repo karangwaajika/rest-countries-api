@@ -1,41 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Andela Week-8 Project</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" />
     <style src="main.js" defer></style>
-    <script src="https://kit.fontawesome.com/03c6c42b15.js" crossorigin="anonymous"></script>
-</head>
-<body>
-    
+    <script
+      src="https://kit.fontawesome.com/03c6c42b15.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
     <nav>
-        <div class="nav-title">
-            Where in the World?
-        </div>
-        <div class="mode">
-            <div class="icon"><i class="fa-regular fa-moon"></i></div>
-            <div class="mode-text">Dark Mode</div>
-        </div>
+      <div class="nav-title">Where in the World?</div>
+      <div class="mode">
+        <div class="icon"><i class="fa-regular fa-moon"></i></div>
+        <div class="mode-text">Dark Mode</div>
+      </div>
     </nav>
     <div class="options">
-        <div class="search-input">
-            <div class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></div><input type="text"  class="country-field" placeholder="Search for a country...">
+      <div class="search-input">
+        <div class="search-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
         </div>
-        <div class="filter">
-            <div class="filter-select">
-                <div class="filter-text">Filter by Region</div>
-                <div class="filter-icon"><i class="fa-solid fa-chevron-down"></i></div>
-            </div>
-            <div class="filter-items">
-                <div class="item" id="Africa">Africa</div>
-                <div class="item" id="America">America</div>
-                <div class="item" id="Asia">Asia</div>
-                <div class="item" id="Europe">Europe</div>
-                <div class="item" id="Oceania">Oceania</div>
-            </div>
+        <input
+          type="text"
+          class="country-field"
+          placeholder="Search for a country..."
+        />
+      </div>
+      <div class="filter">
+        <div class="filter-select">
+          <div class="filter-text">Filter by Region</div>
+          <div class="filter-icon">
+            <i class="fa-solid fa-chevron-down"></i>
+          </div>
         </div>
+        <div class="filter-items">
+          <div class="item" id="Africa">Africa</div>
+          <div class="item" id="America">America</div>
+          <div class="item" id="Asia">Asia</div>
+          <div class="item" id="Europe">Europe</div>
+          <div class="item" id="Oceania">Oceania</div>
+        </div>
+      </div>
     </div>
-</body>
+    <div class="display-countries">
+      <div class="card">
+        <div class="flag">
+          <img src="strawberry.jpeg" alt="" />
+        </div>
+        <div class="content">
+          <h3>Rwanda</h3>
+          <ul>
+            <li><span style="font-weight: 600">Population</span>: 666</li>
+            <li>Region: Kigali</li>
+            <li>Capital: Kigali</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </body>
 </html>

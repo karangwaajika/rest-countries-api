@@ -117,3 +117,34 @@ nav {
 .filter-items .item:active{
     background-color: hsl(0, 0%, 98%);
 }
+
+.display-countries{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 42px;
+    align-items: center;
+    padding: 20px 50px 20px 50px;
+}
+
+.card{
+    width: 255px;
+    background-color: hsl(0, 0%, 100%);
+    border-radius: 3px;
+}
+.flag img{
+    border-radius: 5px 5px 0 0 ;
+    height: 150px;
+    width: 255px;
+}
+.content{
+    padding-left: 15px;
+    padding-bottom: 30px;
+    margin: 0;
+}
+
+.content ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    font-weight: 300;
+}
