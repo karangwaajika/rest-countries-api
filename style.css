@@ -1,6 +1,5 @@
 * {
     font-family: Nunito Sans, sans-serif;
-    font-weight: 300, 600, 800;
     box-sizing: border-box;
 }
 
@@ -21,7 +20,7 @@ nav {
 .nav-title{
     flex-grow: 1;
     flex-shrink: 0;
-    font-weight: bold;
+    font-weight: 800;
 }
 
 .mode {
@@ -141,12 +140,10 @@ nav {
     padding-bottom: 30px;
     margin: 0;
 }
-
-.content ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    font-weight: 300;
+.content .header{
+    font-weight: 600;
+    margin-top: 15px;
+    margin-bottom: 15px;
 }
 
 .loader-div {
@@ -156,4 +153,21 @@ nav {
 .loader-div img{
     border-radius: 100px;
     margin: auto;
+}
+
+.content .details{
+    display: flex;
+    flex-direction: column;
+    gap:3px;
+}
+
+.population, .capital, .region{
+    display: flex;
+    gap:1px;
+}
+.key{
+    font-weight: 300;
+}
+.value{
+    color: hsl(0, 0%, 52%);
 }
