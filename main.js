@@ -49,12 +49,14 @@ async function showCountries(){
             },'')
 
             populationVal = populationDigitsWithComma;
-
+            let indexOfCountry = result.findIndex(x=> x.name == country.name);
             card +=`
                 <div class="card">
+                    <a href="country.html?id=${indexOfCountry}"> 
                     <div class="flag">
                     <img src="${country.flags.png}" alt="${country.name}" />
                     </div>
+                    </a>
                     <div class="content">
                     <div class="header">${country.name}</div>
                     <div class="details">
@@ -74,7 +76,7 @@ async function showCountries(){
                     </div>
                 </div>`;
         });
-        console.log(result[6]);
+
         displayCountries.innerHTML = card;
         displayCountries.style.display = "flex";
         loaderDiv.style.display="none";
@@ -163,12 +165,15 @@ async function searchCountry(e){
                 },'')
     
                 populationVal = populationDigitsWithComma;
+                let indexOfCountry = result.findIndex(x=> x.name == country.name);
     
                 card +=`
                     <div class="card">
+                        <a href="country.html?id=${indexOfCountry}">
                         <div class="flag">
                         <img src="${country.flags.png}" alt="${country.name}" />
                         </div>
+                        </a>
                         <div class="content">
                         <div class="header">${country.name}</div>
                         <div class="details">
@@ -267,12 +272,15 @@ async function searchCountryByRegion(continent){
             },'')
 
             populationVal = populationDigitsWithComma;
+            let indexOfCountry = result.findIndex(x=> x.name == country.name);
 
             card +=`
                 <div class="card">
+                    <a href="country.html?id=${indexOfCountry}">
                     <div class="flag">
                     <img src="${country.flags.png}" alt="${country.name}" />
                     </div>
+                    </a>
                     <div class="content">
                     <div class="header">${country.name}</div>
                     <div class="details">
