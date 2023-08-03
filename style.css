@@ -107,7 +107,8 @@ nav {
 .filter-items .item{
     padding: 10px;
     font-size: 12px;
-    width: 200px
+    width: 200px;
+    cursor: pointer;
 }
 
 .filter-items .item:hover{
@@ -178,8 +179,21 @@ nav {
     padding: 10px;
     color:black;
     background-color: #f57149;
-    color:white;
+    color:hsl(0, 0%, 100%);
     margin-top: 20px;
     text-align: center;
     display: none;
+}
+.region-name{
+    border-radius: 5px;
+    padding: 10px;
+    color:black;
+    background-color: hsl(0, 0%, 100%);
+    color:hsl(200, 15%, 8%);;
+    margin-top: 20px;
+    text-align: center;
+    display: none;
+    box-shadow: 0px 3px #e1e4de40;
+    font-weight: 800;
+    
 }

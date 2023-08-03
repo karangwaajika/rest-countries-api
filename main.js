@@ -2,6 +2,8 @@ const displayCountries = document.querySelector('.display-countries');
 const loaderDiv = document.querySelector('.loader-div');
 const userInput = document.querySelector('.country-field');
 const errorDiv = document.querySelector('.error');
+const regions = document.querySelectorAll('.item');
+const displayedRegion = document.querySelector('.region-name');
 let currentString ='';
 
 async function showCountries(){
@@ -99,6 +101,7 @@ async function searchCountry(e){
 
     loaderDiv.style.display="flex";
     displayCountries.style.display = "none";
+    displayedRegion.style.display = "none";
     const url = `data.json`;
     const options = {
         mode: 'cors'
@@ -190,8 +193,10 @@ async function searchCountry(e){
             displayCountries.style.display = "flex";
             loaderDiv.style.display="none";
             errorDiv.style.display="none";
+ 
         }).catch((err)=>{
             displayCountries.style.display = "none";
+            displayedRegion.style.display = "none";
             errorDiv.style.display="block";
             errorDiv.textContent = err;
             loaderDiv.style.display="none";
@@ -202,9 +207,109 @@ async function searchCountry(e){
         
     } catch (error) {
         displayCountries.style.display = "none";
+        displayedRegion.style.display = "none";
         errorDiv.style.display="block";
         errorDiv.textContent = "Unable to fetch Data";
         loaderDiv.style.display="none";
     }
 }
 userInput.addEventListener('keydown', searchCountry);
+
+async function searchCountryByRegion(continent){
+    
+    let continentName = continent.target.getAttribute('id');
+
+    loaderDiv.style.display="flex";
+    displayCountries.style.display = "none";
+    displayedRegion.style.display = "none";
+   
+    const url = `data.json`;
+    const options = {
+        mode: 'cors'
+    };
+    
+    try {
+        let card = '';
+        const response = await fetch(url, options);
+        const result = await response.json();
+      
+        let filterCountry = result.filter(x => x.region == continentName);
+        
+        filterCountry.forEach(country => {
+            let populationVal = country.population;
+            let listPopulationDigits = populationVal.toString().split("");
+            let reversePopulationDigits = [];
+            
+            for(i in listPopulationDigits){
+                reversePopulationDigits.unshift(listPopulationDigits[i]);
+            }
+            let reversePopulationDigitsWithComma =  [...reversePopulationDigits];
+            for(let j=0; j < reversePopulationDigits.length; j++){
+                if((j+1)%3 == 0 && (j+1) != reversePopulationDigits.length){
+                    console.log(reversePopulationDigits[j]);
+                    const numberOfComma = reversePopulationDigitsWithComma
+                                    .filter(element=>element == ',')
+                                    .reduce((tot, commas)=>{
+                                        return tot+1;
+                                    },0); 
+                
+                    let commaStartingPosition = j+numberOfComma+1;
+            
+                    reversePopulationDigitsWithComma.splice(commaStartingPosition,0, ',');
+                } 
+            }
+            let listPopulationDigitsWithComma = [];
+            for(i in reversePopulationDigitsWithComma){
+                listPopulationDigitsWithComma.unshift(reversePopulationDigitsWithComma[i]);
+            }
+            const populationDigitsWithComma = listPopulationDigitsWithComma.reduce((text,element)=>{
+                return text+element;
+            },'')
+
+            populationVal = populationDigitsWithComma;
+
+            card +=`
+                <div class="card">
+                    <div class="flag">
+                    <img src="${country.flags.png}" alt="${country.name}" />
+                    </div>
+                    <div class="content">
+                    <div class="header">${country.name}</div>
+                    <div class="details">
+                        <div class="population">
+                            <div class="key">Population:</div>
+                            <div class="value">${populationVal}</div>
+                        </div>
+                        <div class="region">
+                            <div class="key">Region:</div>
+                            <div class="value">${country.region}</div>
+                        </div>
+                        <div class="capital">
+                            <div class="key">Capital:</div>
+                            <div class="value">${country.capital}</div>
+                        </div>
+                    </div>
+                    </div>
+                </div>`;
+        });
+    
+    displayCountries.innerHTML = card;
+    displayedRegion.textContent = continentName;
+    displayedRegion.style.display = "block";
+    displayCountries.style.display = "flex";
+    loaderDiv.style.display="none";
+    errorDiv.style.display="none";
+   
+    } catch (error) {
+        displayCountries.style.display = "none";
+        displayedRegion.style.display = "none";
+        errorDiv.style.display="block";
+        errorDiv.textContent = "Unable to fetch Data";
+        loaderDiv.style.display="none";
+    }
+}
+
+regions.forEach((region)=>{
+    region.addEventListener('click', searchCountryByRegion);
+})
+
