@@ -28,7 +28,7 @@ async function showCountries(){
             let reversePopulationDigitsWithComma =  [...reversePopulationDigits];
             for(let j=0; j < reversePopulationDigits.length; j++){
                 if((j+1)%3 == 0 && (j+1) != reversePopulationDigits.length){ // target every the 3rd digits and exclude the last 3rd one
-                    console.log(reversePopulationDigits[j]);
+                    
                     const numberOfComma = reversePopulationDigitsWithComma
                                     .filter(element=>element == ',')
                                     .reduce((tot, commas)=>{
@@ -93,7 +93,7 @@ async function searchCountry(e){
     
     if(e.keyCode == 8){ // if backspace key is pressed
         let extractLastElement = currentString.slice(0, currentString.length - 1); // remove the last element
-        console.log(`extract ${extractLastElement}`)
+        
         currentString = extractLastElement; //update the current string to a new substring
         
     }else{
@@ -144,7 +144,7 @@ async function searchCountry(e){
                 let reversePopulationDigitsWithComma =  [...reversePopulationDigits];
                 for(let j=0; j < reversePopulationDigits.length; j++){
                     if((j+1)%3 == 0 && (j+1) != reversePopulationDigits.length){
-                        console.log(reversePopulationDigits[j]);
+                        
                         const numberOfComma = reversePopulationDigitsWithComma
                                         .filter(element=>element == ',')
                                         .reduce((tot, commas)=>{
@@ -251,7 +251,7 @@ async function searchCountryByRegion(continent){
             let reversePopulationDigitsWithComma =  [...reversePopulationDigits];
             for(let j=0; j < reversePopulationDigits.length; j++){
                 if((j+1)%3 == 0 && (j+1) != reversePopulationDigits.length){
-                    console.log(reversePopulationDigits[j]);
+                    
                     const numberOfComma = reversePopulationDigitsWithComma
                                     .filter(element=>element == ',')
                                     .reduce((tot, commas)=>{

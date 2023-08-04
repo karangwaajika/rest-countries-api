@@ -45,7 +45,7 @@ async function displayCountry(){
             let reversePopulationDigitsWithComma =  [...reversePopulationDigits];
             for(let j=0; j < reversePopulationDigits.length; j++){
                 if((j+1)%3 == 0 && (j+1) != reversePopulationDigits.length){ // target every the 3rd digits and exclude the last 3rd one
-                    console.log(reversePopulationDigits[j]);
+                    
                     const numberOfComma = reversePopulationDigitsWithComma
                                     .filter(element=>element == ',')
                                     .reduce((tot, commas)=>{
@@ -128,7 +128,7 @@ async function displayCountry(){
                 </div>
                 <div class="bottom-details">
                     <div class="border">
-                        <div class="key">Borders:</div>
+                        <div class="key">Border Countries:</div>
                         <div class="border-countries">${borderDiv}</div>
                     </div>
                 </div>
@@ -137,7 +137,7 @@ async function displayCountry(){
         displayCountryDiv.innerHTML = card;
         displayCountryDiv.style.display = "flex";
         loaderDiv.style.display="none";
-        console.log(country)
+        
             
     } catch (error) {
        
