@@ -144,6 +144,17 @@ nav {
     border-radius: 100px;
     margin: auto;
 }
+.error{
+    border: 1px solid #f57149;
+    border-radius: 5px;
+    padding: 10px;
+    color:black;
+    background-color: #f57149;
+    color:hsl(0, 0%, 100%);
+    margin: 20px 50px 0px 50px;
+    text-align: center;
+    display: none;
+}
 @media all and (max-width: 670px) {
     .country-card{
         flex-wrap:wrap;

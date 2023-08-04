@@ -3,6 +3,7 @@ let urlParam = new URLSearchParams(key);
 let keyValue = urlParam.get('id'); //get the country index number from url
 const loaderDiv = document.querySelector('.loader-div');
 const displayCountryDiv = document.querySelector('.country-card');
+const errorDiv = document.querySelector('.error');
 
 async function displayCountry(){
     loaderDiv.style.display="flex";
@@ -141,7 +142,9 @@ async function displayCountry(){
             
     } catch (error) {
        
-        console.log(error)
+        errorDiv.style.display="block";
+        errorDiv.textContent = "No country with the matching index provided";
+        loaderDiv.style.display="none";
     }
 }
 displayCountry();
