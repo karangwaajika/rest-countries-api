@@ -80,13 +80,12 @@ async function displayCountry(){
                 return all+' '+item.name+',';
             },'');
             currencies = currencies.slice(0, currencies.length - 1); // remove the last comma
-             
             
             card +=`
 
-            
+            <div class="flag">
             <img src="${country.flags.svg}" alt="${country.name}" />
-        
+            </div>
             <div class="contents">
                 <div class="top-detail">${country.name}</div>
                 <div class="middle-details">

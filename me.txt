@@ -1,0 +1,26 @@
+// let borderCountryDiv = await filterBorderCountry.then(xx=>{
+            //     let me = xx.reduce((all, item) => {
+            //         let indexOfCountry = result.findIndex(x=> x.name == item.name);
+            //         return all+`<div class="country-border"><a href="country.html?id=${indexOfCountry}">${item.name}</a></div>`;
+            //     },'');
+            //     return me;
+
+            // }).catch(x=> console.log(x));
+            // console.log(borderCountryDiv);
+let filterBorderCountry = (foundBorder, noFoundBorder)=>{
+            const borderCountryCode = country.borders;
+            const borderCountryInfo = result.filter(x =>{
+                for(let i in borderCountryCode){
+                    if(x.alpha3Code == borderCountryCode[i]){
+                        return true;
+                    }
+                }
+            });
+            if(borderCountryInfo.length > 0){
+                foundBorder(borderCountryInfo);
+            }else{
+                noFoundBorder('No border country');
+            }
+        } 
+        let aji = filterBorderCountry;
+        console.log(aji());            

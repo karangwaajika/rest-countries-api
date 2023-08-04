@@ -53,21 +53,23 @@ nav {
 
 .country-card{
     display:none;
-    flex-wrap: wrap;
     gap:50px;
-    margin: 40px 50px 0px 50px;
     background-color: hsl(0, 0%, 100%);
 }
-
-.country-card img{
-    height: 300px;
+.container{
+    padding: 40px 50px 0px 50px;
+}
+.country-card .flag{
+    height: auto;
+}
+img{
     width: 400px;
-    border-radius: 0;
+    height: 300px;
 }
 
 .country-card .contents{
+    padding-top: 35px;
     flex-grow: 1;
-    padding-top: 40px;
     display: flex;
     gap:30px;
     flex-direction: column;
@@ -81,17 +83,33 @@ nav {
     gap:5px;
     flex-wrap: wrap;
 }
+
+.border-countries a{
+    padding:6px 20px 6px 20px;
+    border: 1px solid #45464440;
+    border-radius: 3px;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 52%);
+    font-size: 12px;
+    box-shadow: 1px 1px 0px 0px #45464440;
+    text-decoration: none;
+}
+.bottom-details{
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+   
+}
 .border{
     display: flex;
-    gap: 10px;
     flex-wrap: wrap;
+    gap:2px;
+  
 }
-.border .key{
-    flex-shrink: 0;
-}
-.border .value{
+.border-countries{
     display: flex;
-    gap:10px;
+    flex-wrap: wrap;
+    gap:5px;
 }
 .key{
     font-weight: 300;
@@ -99,6 +117,7 @@ nav {
 .value{
     color: hsl(0, 0%, 52%);
 }
+
 .contents .top-detail{
     font-weight: 600;
     font-size: 16px;
@@ -112,21 +131,6 @@ nav {
     display: flex;
     flex-direction: column;
     gap:5px;
-}
-
-.country-border a{
-    padding:6px 20px 6px 20px;
-    border: 1px solid #45464440;
-    border-radius: 3px;
-    background-color: hsl(0, 0%, 100%);
-    color: hsl(0, 0%, 52%);
-    font-size: 12px;
-    box-shadow: 1px 1px 0px 0px #45464440;
-    text-decoration: none;
-}
-
-.bottom-details{
-    margin-top: 10px;
 }
 
 .loader-div {
