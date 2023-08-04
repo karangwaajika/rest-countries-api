@@ -31,7 +31,7 @@ async function displayCountry(){
             },'');
         }
         else{
-            borderDiv = 'No Border';
+            borderDiv = '<a href="index.html" class="country-border">No Border, Go to Home Page? </a>';
         }
         
 
