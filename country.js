@@ -1,3 +1,132 @@
 let key = window.location.search;
 let urlParam = new URLSearchParams(key);
 let keyValue = urlParam.get('id'); //get the country index number from url
+const loaderDiv = document.querySelector('.loader-div');
+const displayCountryDiv = document.querySelector('.country-card');
+
+async function displayCountry(){
+    loaderDiv.style.display="flex";
+    const url = `data.json`;
+    const options = {
+        mode: 'cors'
+    };
+    try {
+        let card = '';
+        const response = await fetch(url, options);
+        const result = await response.json();
+        const country= result[keyValue];
+           
+            let populationVal = country.population;
+            let listPopulationDigits = populationVal.toString().split("");
+            let reversePopulationDigits = [];
+            
+            for(i in listPopulationDigits){
+                reversePopulationDigits.unshift(listPopulationDigits[i]); //reverse string so to start putting commas starting from right
+            }
+            let reversePopulationDigitsWithComma =  [...reversePopulationDigits];
+            for(let j=0; j < reversePopulationDigits.length; j++){
+                if((j+1)%3 == 0 && (j+1) != reversePopulationDigits.length){ // target every the 3rd digits and exclude the last 3rd one
+                    console.log(reversePopulationDigits[j]);
+                    const numberOfComma = reversePopulationDigitsWithComma
+                                    .filter(element=>element == ',')
+                                    .reduce((tot, commas)=>{
+                                        return tot+1;
+                                    },0); 
+                
+                    let commaStartingPosition = j+numberOfComma+1; // find the position to put the comma, by taking consideration of new incoming element (commas) as it updates the string length
+            
+                    reversePopulationDigitsWithComma.splice(commaStartingPosition,0, ',');
+                } 
+            }
+            let listPopulationDigitsWithComma = [];
+            for(i in reversePopulationDigitsWithComma){
+                listPopulationDigitsWithComma.unshift(reversePopulationDigitsWithComma[i]);
+            }
+            const populationDigitsWithComma = listPopulationDigitsWithComma.reduce((text,element)=>{
+                return text+element;
+            },'')
+
+            populationVal = populationDigitsWithComma;
+            
+            card +=`
+                    
+            
+            <img src="${country.flags.svg}" alt="${country.name}" />
+        
+            <div class="contents">
+                <div class="top-detail">Rwanda</div>
+                <div class="middle-details">
+                    <div class="left-details">
+                        <div class="population">
+                            <div class="key">Population:</div>
+                            <div class="value">12,229,999</div>
+                        </div>
+                        <div class="region">
+                            <div class="key">Region:</div>
+                            <div class="value">Africa</div>
+                        </div>
+                        <div class="capital">
+                            <div class="key">Capital:</div>
+                            <div class="value">Kigali</div>
+                        </div>
+                        <div class="population">
+                            <div class="key">Population:</div>
+                            <div class="value">12,229,999</div>
+                        </div>
+                        <div class="region">
+                            <div class="key">Region:</div>
+                            <div class="value">Africa</div>
+                        </div>
+                    </div>
+                    <div class="right-details">
+                        <div class="population">
+                            <div class="key">Population:</div>
+                            <div class="value">12,229,999</div>
+                        </div>
+                        <div class="region">
+                            <div class="key">Region:</div>
+                            <div class="value">Africa</div>
+                        </div>
+                        <div class="region">
+                            <div class="key">Region:</div>
+                            <div class="value">Africa, Africa, Africa, Africa, Africa,Africa</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bottom-details">
+                    <div class="border">
+                        <div class="key">Borders:</div>
+                        <div class="value">
+                            <div class="country-border">
+                                <a href="index.html">
+                                    France
+                                </a> 
+                            </div>
+                            <div class="country-border">
+                                <a href="index.html">
+                                    France
+                                </a> 
+                            </div>
+                            <div class="country-border">
+                                <a href="index.html">
+                                    France
+                                </a> 
+                            </div>
+                           
+                        </div>
+                    </div>
+                </div>
+            </div>`;
+        
+
+        displayCountryDiv.innerHTML = card;
+        displayCountryDiv.style.display = "flex";
+        loaderDiv.style.display="none";
+        console.log(country)
+        
+    } catch (error) {
+       
+        console.log(error)
+    }
+}
+displayCountry();

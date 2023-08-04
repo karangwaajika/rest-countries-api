@@ -52,7 +52,7 @@ nav {
 }
 
 .country-card{
-    display:flex;
+    display:none;
     flex-wrap: wrap;
     gap:100px;
     margin: 40px 50px 0px 50px;
@@ -122,4 +122,13 @@ nav {
 
 .bottom-details{
     margin-top: 10px;
+}
+
+.loader-div {
+    display: none;
+    opacity: 0.8;
+}
+.loader-div img{
+    border-radius: 100px;
+    margin: auto;
 }
