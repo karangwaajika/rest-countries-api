@@ -47,49 +47,64 @@ async function displayCountry(){
             },'')
 
             populationVal = populationDigitsWithComma;
+            let topLevelDomain = country.topLevelDomain.reduce((all, item) => {
+                return all+' '+item+',';
+            },'');
+            topLevelDomain = topLevelDomain.slice(0, topLevelDomain.length - 1); // remove the last comma
+
+            let languages = country.languages.reduce((all, item) => {
+                return all+' '+item.name+',';
+            },'');
+            languages = languages.slice(0, languages.length - 1); // remove the last comma
+
+            let currencies = country.currencies.reduce((all, item) => {
+                return all+' '+item.name+',';
+            },'');
+            currencies = currencies.slice(0, currencies.length - 1); // remove the last comma
+             
             
             card +=`
-                    
+
             
             <img src="${country.flags.svg}" alt="${country.name}" />
         
             <div class="contents">
-                <div class="top-detail">Rwanda</div>
+                <div class="top-detail">${country.name}</div>
                 <div class="middle-details">
                     <div class="left-details">
-                        <div class="population">
+                        <div class="native-name">
+                            <div class="key">Native Name:</div>
+                            <div class="value">${country.nativeName}</div>
+                        </div>
+                        <div class="detail-item">
                             <div class="key">Population:</div>
-                            <div class="value">12,229,999</div>
+                            <div class="value">${populationVal}</div>
                         </div>
-                        <div class="region">
+                        <div class="detail-item">
                             <div class="key">Region:</div>
-                            <div class="value">Africa</div>
+                            <div class="value">${country.region}</div>
                         </div>
-                        <div class="capital">
+                        <div class="detail-item">
+                            <div class="key">Sub Region:</div>
+                            <div class="value">${country.subregion}</div>
+                        </div>
+                        <div class="detail-item">
                             <div class="key">Capital:</div>
-                            <div class="value">Kigali</div>
-                        </div>
-                        <div class="population">
-                            <div class="key">Population:</div>
-                            <div class="value">12,229,999</div>
-                        </div>
-                        <div class="region">
-                            <div class="key">Region:</div>
-                            <div class="value">Africa</div>
+                            <div class="value">${country.capital}</div>
                         </div>
                     </div>
                     <div class="right-details">
-                        <div class="population">
-                            <div class="key">Population:</div>
-                            <div class="value">12,229,999</div>
+                        <div class="detail-item">
+                            <div class="key">Top Level Domain:</div>
+                            <div class="value">${topLevelDomain}</div>
                         </div>
-                        <div class="region">
-                            <div class="key">Region:</div>
-                            <div class="value">Africa</div>
+                        <div class="detail-item">
+                            <div class="key">Currencies:</div>
+                            <div class="value">${currencies}</div>
                         </div>
-                        <div class="region">
-                            <div class="key">Region:</div>
-                            <div class="value">Africa, Africa, Africa, Africa, Africa,Africa</div>
+                        <div class="detail-item">
+                            <div class="key">Languages:</div>
+                            <div class="value">${languages}</div>
                         </div>
                     </div>
                 </div>

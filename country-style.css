@@ -54,7 +54,7 @@ nav {
 .country-card{
     display:none;
     flex-wrap: wrap;
-    gap:100px;
+    gap:50px;
     margin: 40px 50px 0px 50px;
     background-color: hsl(0, 0%, 100%);
 }
@@ -72,9 +72,14 @@ nav {
     gap:30px;
     flex-direction: column;
 }
-.population, .capital, .region{
+.detail-item{
     display: flex;
     gap:5px;
+}
+.native-name{
+    display: flex;
+    gap:5px;
+    flex-wrap: wrap;
 }
 .border{
     display: flex;
