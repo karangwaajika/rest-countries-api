@@ -1,0 +1,125 @@
+* {
+    font-family: Nunito Sans, sans-serif;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: hsl(0, 0%, 100%);
+    color:hsl(200, 15%, 8%);
+    font-size: 14px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: hsl(0, 0%, 100%);
+    padding: 20px 50px 20px 50px;
+    box-shadow: 0px 3px #e1e4de40;
+}
+
+.nav-title{
+    flex-grow: 1;
+    flex-shrink: 0;
+    font-weight: 800;
+}
+
+.mode {
+    display: flex;
+    gap: 5px;
+}
+
+.back{
+    display:flex;
+    margin-top: 20px;
+    margin: 40px 50px 0px 50px;
+    
+}
+
+.back a{
+    padding:8px 30px 8px 30px;
+    border: 1px solid #45464440;
+    border-radius: 3px;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 52%);
+    font-size: 12px;
+    box-shadow: 1px 1px 0px 0px #45464440;
+    text-decoration: none;
+
+}
+.back-button{
+    display:flex;
+    gap:5px;
+}
+
+.country-card{
+    display:flex;
+    flex-wrap: wrap;
+    gap:100px;
+    margin: 40px 50px 0px 50px;
+    background-color: hsl(0, 0%, 100%);
+}
+
+.country-card img{
+    height: 300px;
+    width: 400px;
+    border-radius: 0;
+}
+
+.country-card .contents{
+    flex-grow: 1;
+    padding-top: 40px;
+    display: flex;
+    gap:30px;
+    flex-direction: column;
+}
+.population, .capital, .region{
+    display: flex;
+    gap:5px;
+}
+.border{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+.border .key{
+    flex-shrink: 0;
+}
+.border .value{
+    display: flex;
+    gap:10px;
+}
+.key{
+    font-weight: 300;
+}
+.value{
+    color: hsl(0, 0%, 52%);
+}
+.contents .top-detail{
+    font-weight: 600;
+    font-size: 16px;
+} 
+.contents .middle-details{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.left-details, .right-details{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+
+.country-border a{
+    padding:6px 20px 6px 20px;
+    border: 1px solid #45464440;
+    border-radius: 3px;
+    background-color: hsl(0, 0%, 100%);
+    color: hsl(0, 0%, 52%);
+    font-size: 12px;
+    box-shadow: 1px 1px 0px 0px #45464440;
+    text-decoration: none;
+}
+
+.bottom-details{
+    margin-top: 10px;
+}
