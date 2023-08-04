@@ -15,7 +15,26 @@ async function displayCountry(){
         const response = await fetch(url, options);
         const result = await response.json();
         const country= result[keyValue];
-           
+        let borderDiv ='';
+        const borderCountryCode = country.borders;
+        const borderCountryInfo = result.filter(x =>{  
+            for(let i in borderCountryCode){
+                if(x.alpha3Code == borderCountryCode[i]){
+                    return true; //keep the matching border code
+                }
+            }
+        });
+        if(borderCountryInfo.length > 0){
+            borderDiv = borderCountryInfo.reduce((all, item) => { //retrieve countries with the matched border code
+                let indexOfCountry = result.findIndex(x=> x.name == item.name); // get index for url 
+                return all+`<a href="country.html?id=${indexOfCountry}" class="country-border">${item.name}</a>`;
+            },'');
+        }
+        else{
+            borderDiv = 'No Border';
+        }
+        
+
             let populationVal = country.population;
             let listPopulationDigits = populationVal.toString().split("");
             let reversePopulationDigits = [];
@@ -111,34 +130,16 @@ async function displayCountry(){
                 <div class="bottom-details">
                     <div class="border">
                         <div class="key">Borders:</div>
-                        <div class="value">
-                            <div class="country-border">
-                                <a href="index.html">
-                                    France
-                                </a> 
-                            </div>
-                            <div class="country-border">
-                                <a href="index.html">
-                                    France
-                                </a> 
-                            </div>
-                            <div class="country-border">
-                                <a href="index.html">
-                                    France
-                                </a> 
-                            </div>
-                           
-                        </div>
+                        <div class="border-countries">${borderDiv}</div>
                     </div>
                 </div>
             </div>`;
         
-
         displayCountryDiv.innerHTML = card;
         displayCountryDiv.style.display = "flex";
         loaderDiv.style.display="none";
         console.log(country)
-        
+            
     } catch (error) {
        
         console.log(error)
