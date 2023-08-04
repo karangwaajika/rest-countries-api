@@ -197,3 +197,24 @@ nav {
     font-weight: 800;
     
 }
+
+.back{
+    display:flex;
+    margin-top: 20px;
+    padding: 20px 50px 20px 50px;
+    
+}
+
+.back a{
+    padding:8px 30px 8px 30px;
+    border-radius: 3px;
+    background-color: hsl(0, 0%, 100%);
+    font-size: 12px;
+    box-shadow: 1px 1px 0px 0px #45464440;
+    text-decoration: none;
+
+}
+.back-button{
+    display:flex;
+    gap:5px;
+}
