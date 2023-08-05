@@ -4,6 +4,12 @@ let keyValue = urlParam.get('id'); //get the country index number from url
 const loaderDiv = document.querySelector('.loader-div');
 const displayCountryDiv = document.querySelector('.country-card');
 const errorDiv = document.querySelector('.error');
+const body = document.querySelector('body');
+const nav = document.querySelector('nav');
+const container = document.querySelector('.container');
+const screeMode = document.querySelector('.mode');
+const backButton = document.querySelector('.back a');
+
 
 async function displayCountry(){
     loaderDiv.style.display="flex";
@@ -12,6 +18,14 @@ async function displayCountry(){
         mode: 'cors'
     };
     try {
+        let iconDiv = screeMode.firstElementChild; // target the element with mode icon  
+        let italicIcon = iconDiv.firstElementChild;
+        let modeIcon = italicIcon.getAttribute('class'); // get icon element class name to know the mode of the page
+        let iconName = modeIcon.split(' ');
+        let pageModeBorder = '';
+        if(iconName[1] == "fa-sun"){
+            pageModeBorder = 'dark-element'; // change the card backgroud color depending on page mode
+        }
         let card = '';
         const response = await fetch(url, options);
         const result = await response.json();
@@ -27,8 +41,8 @@ async function displayCountry(){
         });
         if(borderCountryInfo.length > 0){
             borderDiv = borderCountryInfo.reduce((all, item) => { //retrieve countries with the matched border code
-                let indexOfCountry = result.findIndex(x=> x.name == item.name); // get index for url 
-                return all+`<a href="country.html?id=${indexOfCountry}" class="country-border">${item.name}</a>`;
+                let indexOfCountry = result.findIndex(x=> x.name == item.name); // get index for url   
+                return all+`<a href="country.html?id=${indexOfCountry}" class="country-border ${pageModeBorder}">${item.name}</a>`;
             },'');
         }
         else{
@@ -82,12 +96,18 @@ async function displayCountry(){
             },'');
             currencies = currencies.slice(0, currencies.length - 1); // remove the last comma
             
+            
+            let pageMode = '';
+            if(iconName[1] == "fa-sun"){
+                pageMode = 'dark'; // change the card backgroud color depending on page mode
+            }
+
             card +=`
 
-            <div class="flag">
+            <div class="flag ${pageMode}">
             <img src="${country.flags.svg}" alt="${country.name}" />
             </div>
-            <div class="contents">
+            <div class="contents ${pageMode}">
                 <div class="top-detail">${country.name}</div>
                 <div class="middle-details">
                     <div class="left-details">
@@ -148,3 +168,24 @@ async function displayCountry(){
     }
 }
 displayCountry();
+
+screeMode.addEventListener('click', (e)=>{
+    let iconDiv = screeMode.firstElementChild;
+    let italicIcon = iconDiv.firstElementChild;
+    let modeIcon = italicIcon.getAttribute('class'); // get icon element class name to know the mode of the page
+    let iconName = modeIcon.split(' ');
+    if(iconName[1] == "fa-moon"){
+       italicIcon.setAttribute('class', 'fa-regular fa-sun')
+       e.target.textContent = "Light Mode";
+    }else{
+       italicIcon.setAttribute('class', 'fa-regular fa-moon')
+       e.target.textContent = "Dark Mode";
+    }
+     body.classList.toggle('dark');
+     nav.classList.toggle('dark-element');
+     backButton.classList.toggle('dark-element');
+     backButton.classList.toggle('dark');
+     displayCountryDiv.classList.toggle('dark');
+     displayCountry();
+     console.log(displayCountryDiv);
+ })
