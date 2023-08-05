@@ -135,6 +135,12 @@ nav.dark-element{
 .value{
     color: hsl(0, 0%, 52%);
 }
+.left-details.dark .value{
+    color: hsl(0, 0%, 100%);
+}
+.right-details.dark .value{
+    color: hsl(0, 0%, 100%);
+}
 
 .contents .top-detail{
     font-weight: 600;

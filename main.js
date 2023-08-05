@@ -78,15 +78,15 @@ async function showCountries(){
                     <div class="content">
                     <div class="header">${country.name}</div>
                     <div class="details">
-                        <div class="population">
+                        <div class="population ${pageMode}">
                             <div class="key">Population:</div>
                             <div class="value">${populationVal}</div>
                         </div>
-                        <div class="region">
+                        <div class="region ${pageMode}">
                             <div class="key">Region:</div>
                             <div class="value">${country.region}</div>
                         </div>
-                        <div class="capital">
+                        <div class="capital ${pageMode}">
                             <div class="key">Capital:</div>
                             <div class="value">${country.capital}</div>
                         </div>

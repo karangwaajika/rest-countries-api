@@ -46,7 +46,7 @@ async function displayCountry(){
             },'');
         }
         else{
-            borderDiv = '<a href="index.html" class="country-border">No Border, Go to Home Page? </a>';
+            borderDiv = `<a href="index.html" class="country-border ${pageModeBorder}">No Border, Go to Home Page? </a>`;
         }
         
 
@@ -110,7 +110,7 @@ async function displayCountry(){
             <div class="contents ${pageMode}">
                 <div class="top-detail">${country.name}</div>
                 <div class="middle-details">
-                    <div class="left-details">
+                    <div class="left-details ${pageMode}">
                         <div class="native-name">
                             <div class="key">Native Name:</div>
                             <div class="value">${country.nativeName}</div>
@@ -132,7 +132,7 @@ async function displayCountry(){
                             <div class="value">${country.capital}</div>
                         </div>
                     </div>
-                    <div class="right-details">
+                    <div class="right-details ${pageMode}">
                         <div class="detail-item">
                             <div class="key">Top Level Domain:</div>
                             <div class="value">${topLevelDomain}</div>
