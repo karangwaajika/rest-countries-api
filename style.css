@@ -16,7 +16,9 @@ nav {
     padding: 20px 50px 20px 50px;
     box-shadow: 0px 3px #e1e4de40;
 }
-
+nav.dark-element{
+    box-shadow: 0px 3px #2b3945;
+}
 .nav-title{
     flex-grow: 1;
     flex-shrink: 0;
@@ -26,6 +28,7 @@ nav {
 .mode {
     display: flex;
     gap: 5px;
+    cursor: pointer;
 }
 
 .options{
@@ -51,7 +54,11 @@ nav {
     box-shadow: 1px 2px 1px #e1e4de40;
     outline: 0;
 }
-
+.country-field.dark-element{
+    border: 1px solid hsl(209, 23%, 22%);
+    color:hsl(0, 0%, 100%);
+    box-shadow: 1px 2px 1px #2b3945;
+}
 .country-field:focus{
     border-color: hsl(0, 0%, 100%);
     outline: 0;
@@ -59,14 +66,22 @@ nav {
     padding: 10px;
     padding-left: 50px;
 }
-
+.country-field.dark-element:focus{
+    border-color: hsl(209, 23%, 22%);
+    outline: 0;
+    box-shadow: 0px 3px #2b3945;
+    padding: 10px;
+    padding-left: 50px;
+}
 .country-field::placeholder {
     color: hsl(0, 0%, 52%);
     opacity: 1;
     padding: 10px;
     font-size: 12px;
 }
-
+.country-field.dark-element::placeholder{
+    color: hsl(0, 0%, 100%);
+}
 .search-icon{
     position: absolute;
     width: 60px;
@@ -96,6 +111,9 @@ nav {
     cursor: pointer;
     box-shadow: 1px 2px 1px #e1e4de40;
 }
+.filter-select.dark-element{
+    box-shadow: 1px 2px 1px #2b3945;
+}
 
 .filter-items{
     border-radius: 3px;
@@ -104,6 +122,9 @@ nav {
     box-shadow: 1px 2px 1px #e1e4de40;
     position: absolute;
     display: none;
+}
+.filter-items.dark-element{
+    box-shadow: 1px 2px 1px #2b3945;
 }
 
 .filter-items .item{
@@ -114,10 +135,16 @@ nav {
 }
 
 .filter-items .item:hover{
-    background-color: hsl(0, 0%, 98%);
+    background-color: hsl(0, 0%, 100%);
+}
+.filter-items.dark-element .item:hover{
+    background-color: hsl(209, 23%, 22%);
 }
 .filter-items .item:active{
-    background-color: hsl(0, 0%, 98%);
+    background-color: hsl(0, 0%, 100%);
+}
+.filter-items.dark-element .item:active{
+    background-color: hsl(209, 23%, 22%);
 }
 
 .display-countries{
@@ -189,13 +216,25 @@ nav {
 .region-name{
     border-radius: 5px;
     padding: 10px;
-    color:black;
     background-color: hsl(0, 0%, 100%);
-    color:hsl(200, 15%, 8%);;
     margin: 20px 50px 0px 50px;
     text-align: center;
     display: none;
     box-shadow: 0px 3px #e1e4de40;
     font-weight: 800;
     
+}
+.region-name.dark-element{
+    box-shadow: 0px 3px #2b3945;
+}
+body.dark{
+    background-color: hsl(207, 26%, 17%);
+    color:hsl(0, 0%, 100%);
+}
+
+.dark-element{
+    background-color: hsl(209, 23%, 22%)
+}
+.fa-sun{
+  color:white;
 }

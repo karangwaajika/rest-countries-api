@@ -4,6 +4,15 @@ const userInput = document.querySelector('.country-field');
 const errorDiv = document.querySelector('.error');
 const regions = document.querySelectorAll('.item');
 const displayedRegion = document.querySelector('.region-name');
+const screeMode = document.querySelector('.mode');
+const body = document.querySelector('body');
+const nav = document.querySelector('nav');
+const countryField = document.querySelector('.country-field');
+const filterSelect = document.querySelector('.filter-select');
+const filterItems = document.querySelector('.filter-items');
+const card = document.querySelector('.card');
+const regionName = document.querySelector('.region-name');
+const searchIcon = document.querySelector('.fa-magnifying-glass');
 let currentString ='';
 
 async function showCountries(){
@@ -50,8 +59,17 @@ async function showCountries(){
 
             populationVal = populationDigitsWithComma;
             let indexOfCountry = result.findIndex(x=> x.name == country.name);
+            let iconDiv = screeMode.firstElementChild; // target the element with mode icon  
+            let italicIcon = iconDiv.firstElementChild;
+            let modeIcon = italicIcon.getAttribute('class'); // get icon element class name to know the mode of the page
+            let iconName = modeIcon.split(' ');
+            let pageMode = '';
+            if(iconName[1] == "fa-sun"){
+                pageMode = 'dark-element'; // change the card backgroud color depending on page mode
+            }
+
             card +=`
-                <div class="card">
+                <div class="card ${pageMode}"> 
                     <a href="country.html?id=${indexOfCountry}"> 
                     <div class="flag">
                     <img src="${country.flags.png}" alt="${country.name}" />
@@ -166,9 +184,17 @@ async function searchCountry(e){
     
                 populationVal = populationDigitsWithComma;
                 let indexOfCountry = result.findIndex(x=> x.name == country.name);
+                let iconDiv = screeMode.firstElementChild; // target the element with mode icon  
+                let italicIcon = iconDiv.firstElementChild;
+                let modeIcon = italicIcon.getAttribute('class'); // get icon element class name to know the mode of the page
+                let iconName = modeIcon.split(' ');
+                let pageMode = '';
+                if(iconName[1] == "fa-sun"){
+                    pageMode = 'dark-element'; // change the card backgroud color depending on page mode
+                }
     
                 card +=`
-                    <div class="card">
+                    <div class="card ${pageMode}">
                         <a href="country.html?id=${indexOfCountry}">
                         <div class="flag">
                         <img src="${country.flags.png}" alt="${country.name}" />
@@ -273,9 +299,17 @@ async function searchCountryByRegion(continent){
 
             populationVal = populationDigitsWithComma;
             let indexOfCountry = result.findIndex(x=> x.name == country.name);
+            let iconDiv = screeMode.firstElementChild; // target the element with mode icon  
+            let italicIcon = iconDiv.firstElementChild;
+            let modeIcon = italicIcon.getAttribute('class'); // get icon element class name to know the mode of the page
+            let iconName = modeIcon.split(' ');
+            let pageMode = '';
+            if(iconName[1] == "fa-sun"){
+                pageMode = 'dark-element'; // change the card backgroud color depending on page mode
+            }
 
             card +=`
-                <div class="card">
+                <div class="card ${pageMode}">
                     <a href="country.html?id=${indexOfCountry}">
                     <div class="flag">
                     <img src="${country.flags.png}" alt="${country.name}" />
@@ -319,5 +353,30 @@ async function searchCountryByRegion(continent){
 
 regions.forEach((region)=>{
     region.addEventListener('click', searchCountryByRegion);
+});
+
+screeMode.addEventListener('click', (e)=>{
+   let iconDiv = screeMode.firstElementChild;
+   let italicIcon = iconDiv.firstElementChild;
+   let modeIcon = italicIcon.getAttribute('class'); // get icon element class name to know the mode of the page
+   let iconName = modeIcon.split(' ');
+   if(iconName[1] == "fa-moon"){
+      italicIcon.setAttribute('class', 'fa-regular fa-sun')
+      e.target.textContent = "Light Mode";
+      searchIcon.style.color = "white";
+   }else{
+      italicIcon.setAttribute('class', 'fa-regular fa-moon')
+      e.target.textContent = "Dark Mode";
+      searchIcon.style.color = "grey";
+   }
+    body.classList.toggle('dark');
+    nav.classList.toggle('dark-element');
+    countryField.classList.toggle('dark-element');
+    filterSelect.classList.toggle('dark-element');
+    filterItems.classList.toggle('dark-element');
+    card.classList.toggle('dark-element');
+    regionName.classList.toggle('dark-element');
+    showCountries();
+    
 })
 
