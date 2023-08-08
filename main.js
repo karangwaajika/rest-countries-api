@@ -114,11 +114,14 @@ async function searchCountry(e){
         
         currentString = extractLastElement; //update the current string to a new substring
         
-    }else{
+    }else if(e.keyCode == 16){ //if the shift key is pressed
+        currentKey = ''; // not consider the shift key value
+    }
+    else{
         currentKey = e.key;
     }
     currentString += currentKey; //combine all the characters to form a string as a user is typing
-
+    currentString = currentString.toLowerCase() //convert the string to lowercase to avoid key sensitive
     loaderDiv.style.display="flex";
     displayCountries.style.display = "none";
     displayedRegion.style.display = "none";
